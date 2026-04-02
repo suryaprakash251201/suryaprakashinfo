@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ThemeToggle from '../ui/ThemeToggle';
 import LanguageSelector from '../ui/LanguageSelector';
 import { useLanguage } from '../../context/LanguageContext';
@@ -21,11 +22,12 @@ const Navbar = () => {
     });
 
     const menuItems = [
-        { name: t.nav.home, href: '#home' },
-        { name: t.nav.about, href: '#about' },
-        { name: t.nav.services, href: '#services' },
-        { name: t.nav.portfolio, href: '#portfolio' },
-        { name: t.nav.contact, href: '#contact' },
+        { name: t.nav.home || 'Home', href: '/#home' },
+        { name: t.nav.about || 'About', href: '/#about' },
+        { name: t.nav.services || 'Services', href: '/#services' },
+        { name: t.nav.portfolio || 'Portfolio', href: '/#portfolio' },
+        { name: 'Blog', href: '/blog' },
+        { name: t.nav.contact || 'Contact', href: '/#contact' },
     ];
 
     return (
@@ -40,20 +42,30 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Logo */}
-                <a href="#" className="text-2xl font-bold text-orange-500 tracking-tighter hover:text-gray-900 dark:hover:text-white transition-colors">
+                <Link to="/" className="text-2xl font-bold text-orange-500 tracking-tighter hover:text-gray-900 dark:hover:text-white transition-colors">
                     SURYA<span className="text-gray-900 dark:text-white">PRAKASH</span>
-                </a>
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-8">
                     {menuItems.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-500 font-medium transition-colors text-sm uppercase tracking-wide"
-                        >
-                            {item.name}
-                        </a>
+                        item.href.startsWith('/#') ? (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-500 font-medium transition-colors text-sm uppercase tracking-wide"
+                            >
+                                {item.name}
+                            </a>
+                        ) : (
+                            <Link
+                                key={item.name}
+                                to={item.href}
+                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-500 font-medium transition-colors text-sm uppercase tracking-wide"
+                            >
+                                {item.name}
+                            </Link>
+                        )
                     ))}
 
                     <div className="flex items-center gap-4 pl-4 border-l border-gray-300 dark:border-gray-700">
@@ -62,10 +74,10 @@ const Navbar = () => {
                     </div>
 
                     <a
-                        href="#contact"
+                        href="/#contact"
                         className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-full transition-all transform hover:scale-105 shadow-lg shadow-orange-500/20"
                     >
-                        {t.nav.hire}
+                        {t.nav.hire || 'Hire Me'}
                     </a>
                 </div>
 
@@ -90,14 +102,25 @@ const Navbar = () => {
                 >
                     <div className="px-6 py-4 space-y-4">
                         {menuItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                className="block text-gray-600 dark:text-gray-300 hover:text-orange-500 font-medium"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {item.name}
-                            </a>
+                            item.href.startsWith('/#') ? (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    className="block text-gray-600 dark:text-gray-300 hover:text-orange-500 font-medium"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {item.name}
+                                </a>
+                            ) : (
+                                <Link
+                                    key={item.name}
+                                    to={item.href}
+                                    className="block text-gray-600 dark:text-gray-300 hover:text-orange-500 font-medium"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {item.name}
+                                </Link>
+                            )
                         ))}
                         <div className="py-2">
                             <LanguageSelector />
