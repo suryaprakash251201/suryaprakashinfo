@@ -24,15 +24,18 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
-::-webkit-scrollbar-track {
+html ::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+html.dark ::-webkit-scrollbar-track {
   background: #0b0c10;
 }
 ::-webkit-scrollbar-thumb {
-  background: #45a29e;
-  border-radius: 5px;
+  background: #f97316;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #66fcf1;
+  background: #ea580c;
 }
