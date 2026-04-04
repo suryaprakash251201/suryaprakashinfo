@@ -130,7 +130,7 @@ const Contact = () => {
                         className="bg-white dark:bg-[#1f2833]/30 p-8 rounded-2xl border border-gray-200 dark:border-white/5 shadow-lg dark:shadow-none transition-colors"
                     >
                         <form className="space-y-6" onSubmit={handleSubmit}>
-                            <div className="grid grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label htmlFor="name" className="text-sm text-gray-600 dark:text-gray-400">{t.contact.form.name}</label>
                                     <input type="text" id="name" value={formData.name} onChange={handleChange} className="w-full bg-gray-50 dark:bg-[#0b0c10] border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white px-4 py-3 rounded-lg focus:outline-none focus:border-orange-500 transition-colors" placeholder="John Doe" required />

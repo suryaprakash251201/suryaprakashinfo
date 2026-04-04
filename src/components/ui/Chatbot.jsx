@@ -89,7 +89,7 @@ const Chatbot = () => {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -97,7 +97,7 @@ const Chatbot = () => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
                         transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-                        className="absolute bottom-20 right-0 w-[380px] max-w-[calc(100vw-3rem)] h-[550px] max-h-[calc(100vh-6rem)] bg-white/95 dark:bg-[#0b0c10]/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden border border-white/20 dark:border-white/10"
+                        className="absolute bottom-16 md:bottom-20 right-0 w-[380px] max-w-[calc(100vw-2rem)] h-[550px] max-h-[calc(100dvh-7rem)] bg-white/95 dark:bg-[#0b0c10]/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden border border-white/20 dark:border-white/10"
                     >
                         {/* Header */}
                         <div className="bg-gradient-to-r from-orange-600 to-orange-400 p-5 flex justify-between items-center shadow-md relative overflow-hidden">
@@ -179,9 +179,9 @@ const Chatbot = () => {
                 transition={!isOpen ? { repeat: Infinity, duration: 2.5, ease: "easeInOut" } : { duration: 0.2 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-16 h-16 bg-white dark:bg-[#1f2833] hover:bg-gray-100 text-orange-500 rounded-full shadow-2xl flex items-center justify-center transition-colors border-2 border-orange-500 overflow-hidden p-0 z-50 relative"
+                className="w-14 h-14 md:w-16 md:h-16 bg-white dark:bg-[#1f2833] hover:bg-gray-100 text-orange-500 rounded-full shadow-2xl flex items-center justify-center transition-colors border-2 border-orange-500 overflow-hidden p-0 z-50 relative"
             >
-                {isOpen ? <FiX className="w-8 h-8" /> : <img src="/vyana-logo.jpg" alt="Vyana" className="w-full h-full object-cover" />}
+                {isOpen ? <FiX className="w-6 h-6 md:w-8 md:h-8" /> : <img src="/vyana-logo.jpg" alt="Vyana" className="w-full h-full object-cover" />}
             </motion.button>
         </div>
     );

@@ -36,7 +36,7 @@ const AppLayout = () => {
     const showPublicShell = !isAdminPage;
 
     return (
-        <div className="bg-slate-50 dark:bg-[#0b0c10] min-h-screen text-slate-800 dark:text-slate-300 font-sans transition-colors duration-300 relative">
+        <div className="bg-slate-50 dark:bg-[#0b0c10] min-h-screen text-slate-800 dark:text-slate-300 font-sans transition-colors duration-300 relative overflow-x-hidden pb-24 md:pb-0">
             <ScrollProgress />
             {showPublicShell && isHomePage && <Navbar />}
             {showPublicShell && !isHomePage && <BlogHeader />}
